@@ -1,8 +1,3 @@
-"""Pure-numpy ranking helpers shared by the app and the evaluation script.
-
-Kept separate from search_engine.py so they can be unit-tested (and tuned)
-without loading FAISS or the embedding model.
-"""
 import re
 
 import numpy as np
