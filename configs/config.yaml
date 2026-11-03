@@ -1,0 +1,99 @@
+project:
+  name: "spotify_semantic_search"
+  version: "model_v2"
+
+data:
+  raw_path: "data/raw/spotify_millsongdata.csv"
+  processed_path: "data/processed/songs.csv"
+  metadata_path: "data/processed/metadata.csv"
+  embeddings_path: "data/processed/embeddings.npy"              # one mean vector per song (v1-style)
+  chunk_embeddings_path: "data/processed/chunk_embeddings.npy"  # one vector per lyric chunk  (NEW)
+  chunk_offsets_path: "data/processed/chunk_offsets.npy"        # song i owns chunks [off[i], off[i+1])  (NEW)
+  title_embeddings_path: "data/processed/title_embeddings.npy"  # one vector per song title  (NEW)
+
+embedding:
+  # Any sentence-transformers model name OR a local folder.
+  # After running scripts/finetune_model.py, set this to "out/finetuned_model"
+  # and re-run generate_embeddings.py + build_index.py.
+  # Other good drop-in choices:
+  #   sentence-transformers/multi-qa-MiniLM-L6-cos-v1   (384-dim, trained for short query -> passage search)
+  #   sentence-transformers/all-mpnet-base-v2           (768-dim, stronger but ~5x slower)
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  dimension: 384             # checked against the model; scripts stop if it doesn't match
+  batch_size: 64
+  normalize_embeddings: true
+  max_seq_length: 256
+  # Some models (e5, bge) expect prefixes like "query: " / "passage: ". Leave empty for MiniLM.
+  query_prefix: ""
+  passage_prefix: ""
+
+lyrics:
+  split_into_sentences: true
+  sentences_per_chunk: 5
+  sentence_overlap: 1
+
+search:
+  # Final song score =  w_chunk * best matching chunk
+  #                   + w_mean  * whole-song (mean-pooled) vector
+  #                   + w_title * song title
+  # Set chunk=0, title=0, mean=1 and query_expansion.enabled=false to reproduce model_v1.
+  # Tuned on configs/eval_queries.yaml: a heavy chunk weight raises scores but lets
+  # short repetitive lines ("love love love") win, so the whole-song vector stays dominant.
+  weights:
+    chunk: 0.20
+    mean: 0.65
+    title: 0.15
+  chunk_top_n: 1             # 1 = best chunk; 2-3 = average of the best few chunks
+  query_expansion:           # pseudo-relevance feedback: re-search with query + centre of top results
+    enabled: true
+    feedback_songs: 5
+    beta: 0.5
+  chunk_candidates: 400      # how many chunks FAISS returns before grouping by song
+  song_candidates: 100       # extra candidates pulled from the mean and title indexes
+  top_k: 10
+  minimum_score: 0.45         # hide weak matches (raw cosine below this). 0 = show everything
+  # Optional: phrases removed from the query before embedding, e.g. ["a song about"].
+  # Off by default -- in testing, stripping "song" from "romantic love song" made results worse.
+  strip_query_words: []
+
+rerank:
+  # Second stage: a cross-encoder reads (query, best-matching lyrics) TOGETHER and
+  # outputs a 0-1 relevance probability. More accurate than cosine alone and its
+  # scores are easy to read (strong matches are usually 0.8+). ~0.5-1 s per query
+  # on CPU; the model downloads (~90MB) on first start. Set enabled: false if slow.
+  enabled: true
+  model_name: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  candidates: 50             # how many top songs get re-ranked
+  weight: 0.5                # ranking = (1-weight) * cosine blend + weight * relevance
+  minimum_relevance: 0.0     # e.g. 0.3 to also hide songs the re-ranker thinks are off-topic
+
+display:
+  # "match %" shown in the UI: raw cosine rescaled so match_low -> 0% and
+  # match_high -> 100%. Display only -- it does not change the ranking.
+  match_low: 0.30
+  match_high: 0.75
+
+finetune:
+  output_dir: "out/finetuned_model"
+  base_model: "sentence-transformers/all-MiniLM-L6-v2"
+  epochs: 1
+  batch_size: 32             # bigger batch = more in-batch negatives = better, if memory allows
+  learning_rate: 2.0e-5
+  warmup_ratio: 0.1
+  max_pairs: 60000           # cap on training pairs (keeps CPU training time reasonable)
+  pairs_per_song: 2
+  exclude_eval_songs: true   # keep songs from configs/eval_queries.yaml out of training (no leakage)
+  seed: 42
+
+output:
+  model_dir: "out/model_v2"
+  chunk_index_path: "out/model_v2/chunks.index"
+  song_index_path: "out/model_v2/songs.index"
+  title_index_path: "out/model_v2/titles.index"
+  chunk_offsets_path: "out/model_v2/chunk_offsets.npy"
+  metadata_path: "out/model_v2/metadata.csv"
+  config_used_path: "out/model_v2/config_used.yaml"
+
+server:
+  host: "127.0.0.1"
+  port: 8000

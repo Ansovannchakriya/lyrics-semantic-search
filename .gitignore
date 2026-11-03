@@ -1,0 +1,46 @@
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ---------- Virtual environments ----------
+.venv/
+venv/
+env/
+.env
+
+# ---------- Dataset (download from Kaggle, see README section 21) ----------
+data/raw/*
+!data/raw/.gitkeep
+
+# ---------- Generated data: cleaned CSV, embeddings (hundreds of MB) ----------
+data/processed/*
+!data/processed/.gitkeep
+
+# ---------- Generated models & FAISS indexes ----------
+out/*
+!out/.gitkeep
+# keep the small labelling sheet from evaluate_search.py --dump-only
+!out/eval_candidates.csv
+
+# ---------- Large binary files anywhere ----------
+*.npy
+*.npz
+*.index
+*.faiss
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# ---------- Editors / OS ----------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- Logs ----------
+*.log

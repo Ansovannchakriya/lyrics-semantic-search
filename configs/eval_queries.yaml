@@ -1,0 +1,105 @@
+queries:
+  - query: sad heartbreak
+    relevant_songs:
+      - ["Warren Zevon", "Heartache Spoken Here"]
+      - ["Squeeze", "Heartbreaking World"]
+      - ["Bee Gees", "Heartbreaker"]
+      - ["Bon Jovi", "Heartbreak Eyes"]
+      - ["Pretenders", "Nothing Breaks Like A Heart"]
+      - ["Kylie Minogue", "Break This Heartbreak"]
+      - ["Justin Bieber", "Heartache"]
+      - ["Frankie Valli", "What Becomes Of The Broken Hearted"]
+
+  - query: romantic love song
+    relevant_songs:
+      - ["Backstreet Boys", "Tender Love"]
+      - ["Rod Stewart", "Isn't It Romantic"]
+      - ["Andy Williams", "Happy Heart"]
+      - ["Lionel Richie", "Don't You Ever Go Away"]
+      - ["Culture Club", "Man Shake"]
+      - ["Reba Mcentire", "Love By Love"]
+      - ["Jose Mari Chan", "Radio Romance"]
+      - ["Michael Bolton", "A Love So Beautiful"]
+      - ["Cher", "Dov'e L'amore"]
+      - ["Kenny Rogers", "A Love Song"]
+
+  - query: falling in love
+    relevant_songs:
+      - ["David Bowie", "As The World Falls Down"]
+      - ["Kylie Minogue", "Falling"]
+      - ["Scorpions", "Falling In Love"]
+      - ["Ed Sheeran", "Kiss Me"]
+      - ["Gloria Estefan", "Falling In Love"]
+      - ["Gloria Estefan", "A Little Push"]
+      - ["Andy Williams", "Falling In Love With Love"]
+
+  - query: loneliness
+    relevant_songs:
+      - ["Janis Joplin", "All Is Loneliness (in Album Joplin In Concert )"]
+      - ["Janis Joplin", "All In Loneliness"]
+      - ["Roy Orbison", "Loneliness"]
+      - ["Janis Joplin", "All Is Loneliness ( In Album Magic Of Love )"]
+      - ["Bob Seger", "Loneliness Is A Feeling"]
+      - ["Yoko Ono", "Loneliness"]
+      - ["Utopia", "Alone"]
+      - ["Grand Funk Railroad", "Loneliness"]
+      - ["Westlife", "Loneliness Knows Me By Name"]
+      - ["Loretta Lynn", "If Loneliness Can Kill Me"]
+
+  - query: missing someone
+    relevant_songs:
+      - ["Rod Stewart", "Missing You"]
+      - ["Alison Krauss", "Missing You"]
+      - ["Evanescence", "Missing"]
+      - ["Loretta Lynn", "I'll Still Be Missing You"]
+      - ["Wanda Jackson", "Missing You"]
+
+  - query: friendship
+    relevant_songs:
+      - ["Ray Charles", "Friendship"]
+      - ["Carpenters", "Good Friends Are For Keeps"]
+      - ["Judy Garland", "Friendship"]
+      - ["Glen Campbell", "Friends"]
+      - ["Reba Mcentire", "Good Friends"]
+      - ["Queen", "Friends Will Be Friends"]
+      - ["Marianne Faithfull", "My Friends Have"]
+      - ["Michael Buble", "You've Got A Friend In Me"]
+
+  - query: feeling confident and powerful
+    relevant_songs:
+      - ["Elvis Presley", "Confidence"]
+      - ["Isley Brothers", "The Pride"]
+      - ["Leann Rimes", "You Are"]
+      - ["Demi Lovato", "Confident"]
+      - ["Jennifer Lopez", "Alive"]
+      - ["Demi Lovato", "Believe In Me"]
+      - ["Richard Marx", "The Power Inside Of Me"]
+      - ["Rush", "One Little Victory"]
+      - ["Squeeze", "Strong In Reason"]
+      - ["Human League", "Egomaniac"]
+
+  - query: party celebration
+    relevant_songs:
+      - ["R. Kelly", "It's Your Birthday"]
+      - ["Mud", "Let's Have A Party"]
+      - ["Madonna", "Celebration"]
+      - ["Backstreet Boys", "Let's Have A Party"]
+      - ["Miley Cyrus", "We Got The Party (With Us)"]
+      - ["Phineas And Ferb", "Intimate Get Together"]
+      - ["David Guetta", "Ain't A Party"]
+      - ["Eagles", "New Years Eve"]
+      - ["Ween", "Your Party"]
+      - ["Whitney Houston", "Celebrate"]
+
+  - query: losing someone you love
+    relevant_songs:
+      - ["Roy Orbison", "Losing You"]
+      - ["Journey", "Once You Love Somebody"]
+      - ["Queen", "It's A Hard Life"]
+      - ["Diana Ross", "Cryin' My Heart Out For You"]
+      - ["John Denver", "Falling Out Of Love"]
+      - ["Hank Snow", "I Care No More"]
+      - ["Scorpions", "When Love Kills Love"]
+      - ["Warren Zevon", "The Heartache"]
+      - ["Vince Gill", "Love Never Broke Anyone's Heart"]
+      - ["Dolly Parton", "Falling Out Of Love With Me"]

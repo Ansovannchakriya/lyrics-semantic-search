@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Semantic Search</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+  <main class="wrap">
+    <header class="header">
+      <h1>Spotify Semantic Search <span class="note">♪</span></h1>
+      <p class="explain">
+        <strong>Describe the mood</strong>, <strong>emotion</strong>, or <strong>theme</strong> of a song you're looking for,
+        in your own words, and this searches
+        <strong>{{ "{:,}".format(num_songs) }}</strong> songs by <strong>the meaning
+        of their <em>lyrics</em></strong>, not by matching exact keywords.
+      </p>
+    </header>
+
+    {% if not engine_ready %}
+    <div class="banner banner-error">
+      <strong>Search index not available.</strong>
+      <p>{{ engine_error }}</p>
+    </div>
+    {% endif %}
+
+    <section class="search-box">
+      <div class="input-row">
+        <input
+          id="query-input"
+          type="text"
+          placeholder="e.g. a sad song about losing someone you love"
+          autocomplete="off"
+          {% if not engine_ready %}disabled{% endif %}
+        >
+        <button id="search-btn" {% if not engine_ready %}disabled{% endif %}>Search</button>
+      </div>
+      <div class="examples">
+        <span>Try:</span>
+        <button class="example-chip" type="button">a sad song about lost love</button>
+        <button class="example-chip" type="button">falling in love</button>
+        <button class="example-chip" type="button">lonely and missing someone</button>
+        <button class="example-chip" type="button">happy song about friendship</button>
+        <button class="example-chip" type="button">feeling confident and powerful</button>
+      </div>
+    </section>
+
+    <div id="loading" class="loading hidden">Searching…</div>
+    <div id="error" class="banner banner-error hidden"></div>
+    <ul id="results" class="results"></ul>
+
+    <footer class="footer">
+      Lyrics-based semantic search · {{ embedding_dim }}-dim embeddings ·
+      chunk + whole-song + title scoring with query expansion (FAISS) ·
+      not an audio or genre recommender
+    </footer>
+  </main>
+
+  <script src="{{ url_for('static', path='script.js') }}"></script>
+</body>
+</html>

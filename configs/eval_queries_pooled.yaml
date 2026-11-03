@@ -1,0 +1,447 @@
+# Pooled relevance labels (fairer than eval_queries.yaml).
+# eval_queries.yaml was labelled from model_v1's own top-10, so v1 gets 100% recall on it
+# by construction and every other method looks worse. Here, the top-10 of SEVERAL methods
+# (v1, chunk scoring, title scoring, query expansion) were pooled per query and each song
+# was judged relevant / not relevant without knowing which method found it.
+# Songs never judged count as not relevant (standard pooling assumption).
+# Use: python scripts/evaluate_search.py --compare --eval-file configs/eval_queries_pooled.yaml
+queries:
+- query: sad heartbreak
+  relevant_songs:
+  - - Bee Gees
+    - Heartbreaker
+  - - Bon Jovi
+    - Heartbreak Eyes
+  - - Cliff Richard
+    - Front Page
+  - - Eddie Cochran
+    - Yesterday's Heartbreak
+  - - Frankie Valli
+    - What Becomes Of The Broken Hearted
+  - - Grand Funk Railroad
+    - Heartbreaker
+  - - Justin Bieber
+    - Heartache
+  - - Kylie Minogue
+    - Break This Heartbreak
+  - - Linda Ronstadt
+    - Heartbreak Kind
+  - - Pretenders
+    - Nothing Breaks Like A Heart
+  - - Rihanna
+    - Cry
+  - - Squeeze
+    - Heartbreaking World
+  - - Warren Zevon
+    - Heartache Spoken Here
+  - - ZZ Top
+    - It's So Hard
+  - - Modern Talking
+    - Don't Let It Get You Down
+  - - Toto
+    - How Does It Feel
+  - - Santana
+    - Cry Baby Cry
+  - - Eddie Cochran
+    - Bad Baby Doll
+  judged_not_relevant:
+  - - Richard Marx
+    - Little Miss Heartbreak
+- query: romantic love song
+  relevant_songs:
+  - - Andy Williams
+    - Happy Heart
+  - - Backstreet Boys
+    - Love Is
+  - - Backstreet Boys
+    - Tender Love
+  - - Bee Gees
+    - Islands In The Stream
+  - - Cher
+    - Dov'e L'amore
+  - - Dusty Springfield
+    - Come For A Dream
+  - - Fleetwood Mac
+    - Love Is
+  - - Jose Mari Chan
+    - Radio Romance
+  - - Judy Garland
+    - Love
+  - - Kenny Rogers
+    - A Love Song
+  - - Linda Ronstadt
+    - Love Me Tender
+  - - Lionel Richie
+    - Don't You Ever Go Away
+  - - Michael Bolton
+    - A Love So Beautiful
+  - - Nat King Cole
+    - Someone You Love
+  - - Reba Mcentire
+    - Love By Love
+  - - Rod Stewart
+    - Isn't It Romantic
+  - - Alabama
+    - Mist Of Desire
+  - - Britney Spears
+    - Need You Next To Me
+  - - Vanilla Ice
+    - I Love You
+  - - Donna Summer
+    - Melody Of Love
+  - - Paul McCartney
+    - Love In Song
+  - - Faith Hill
+    - Love Is A Sweet Thing
+  - - Dusty Springfield
+    - I Want Your Love Tonight
+  - - Tom Jones
+    - The Anniversary Song
+  - - Andy Williams
+    - You'll Never Walk Alone
+  - - Andy Williams
+    - Godfather
+  - - Xscape
+    - One Of Those Love Songs
+  - - Engelbert Humperdinck
+    - When I Fall In Love
+  judged_not_relevant:
+  - - Culture Club
+    - Man Shake
+  - - Joni Mitchell
+    - Love
+  - - Rammstein
+    - Amor
+  - - Talking Heads
+    - Love For Sale
+  - - Who
+    - Our Love Was
+  - - Extreme
+    - Song For Love
+- query: falling in love
+  relevant_songs:
+  - - Andy Williams
+    - Falling In Love With Love
+  - - Bonnie Raitt
+    - I Can't Help Myself
+  - - David Bowie
+    - As The World Falls Down
+  - - Ed Sheeran
+    - Kiss Me
+  - - Gino Vannelli
+    - Fallen In Love
+  - - Gloria Estefan
+    - A Little Push
+  - - Gloria Estefan
+    - Falling In Love
+  - - Janis Joplin
+    - Caterpillar
+  - - Josh Groban
+    - I Believe (When I Fall In Love It Will Be Forever)
+  - - Kylie Minogue
+    - Falling
+  - - Neil Diamond
+    - Falling
+  - - Rod Stewart
+    - Let's Fall In Love
+  - - Scorpions
+    - Falling In Love
+  - - Uriah Heep
+    - Falling In Love
+  - - Michael Jackson
+    - Happy
+  - - Chaka Khan
+    - Love Has Fallen On Me
+  - - Engelbert Humperdinck
+    - When I Fall In Love
+  - - Doris Day
+    - When I Fall In Love
+  - - Cheap Trick
+    - Can't Stop Fallin' Into Love
+  - - Carpenters
+    - When I Fall In Love
+  judged_not_relevant:
+  - - Aerosmith
+    - Falling In Love
+  - - Richard Marx
+    - I'm Never Gonna Fall In Love Again
+  - - Tom Jones
+    - I'll Never Fall In Love Again
+  - - Gloria Estefan
+    - Give It Up
+- query: loneliness
+  relevant_songs:
+  - - Bob Seger
+    - Loneliness Is A Feeling
+  - - Grand Funk Railroad
+    - Loneliness
+  - - HIM
+    - Killing Loneliness
+  - - Janis Joplin
+    - All In Loneliness
+  - - Janis Joplin
+    - All Is Loneliness ( In Album Magic Of Love )
+  - - Janis Joplin
+    - All Is Loneliness (in Album Joplin In Concert )
+  - - Korn
+    - Tearjerker
+  - - Loretta Lynn
+    - If Loneliness Can Kill Me
+  - - Morrissey
+    - Please Help The Cause Against Loneliness
+  - - Roy Orbison
+    - Loneliness
+  - - Utopia
+    - Alone
+  - - Westlife
+    - Loneliness Knows Me By Name
+  - - Yoko Ono
+    - Loneliness
+  - - Foo Fighters
+    - Stranger Things Have Happened
+  - - Neil Sedaka
+    - Going Nowhere
+  - - Chicago
+    - Now That You've Gone
+  judged_not_relevant:
+  - - Yoko Ono
+    - Nobody Sees Me Like You Do
+  - - Soundgarden
+    - Zero Chance
+- query: missing someone
+  relevant_songs:
+  - - Alison Krauss
+    - Missing You
+  - - Divine
+    - Missing U
+  - - Electric Light Orchestra
+    - Without Someone
+  - - Eric Clapton
+    - Missing Person
+  - - Evanescence
+    - Missing
+  - - Kinks
+    - Missing Persons
+  - - Lloyd Cole
+    - Missing
+  - - Loretta Lynn
+    - I'll Still Be Missing You
+  - - Loretta Lynn
+    - Somebody Somewhere
+  - - Rod Stewart
+    - Missing You
+  - - Uriah Heep
+    - Lost One Love
+  - - Wanda Jackson
+    - Missing You
+  - - John Waite
+    - Missing You
+  - - George Strait
+    - Gone As A Girl Can Get
+  - - Olly Murs
+    - A Million More Years
+  judged_not_relevant:
+  - - Annie
+    - Something Was Missing
+  - - Depeche Mode
+    - Gone (The Vacuous House Mix)
+  - - Harry Connick, Jr.
+    - Something Was Missing
+  - - Kylie Minogue
+    - I Don't Need Anyone
+  - - Michael W. Smith
+    - Missing Person
+- query: friendship
+  relevant_songs:
+  - - Bette Midler
+    - Friends
+  - - Bruce Springsteen
+    - Always A Friend
+  - - Carpenters
+    - Good Friends Are For Keeps
+  - - Donna Summer
+    - Friends
+  - - Glen Campbell
+    - Friends
+  - - John Denver
+    - Friends With You
+  - - Judy Garland
+    - Friendship
+  - - Marianne Faithfull
+    - My Friends Have
+  - - Michael Buble
+    - You've Got A Friend In Me
+  - - Miley Cyrus
+    - True Friend
+  - - Queen
+    - Friends Will Be Friends
+  - - Ray Charles
+    - Friendship
+  - - Reba Mcentire
+    - Good Friends
+  - - Garth Brooks
+    - A Friend To Me
+  - - Natalie Cole
+    - We're The Best Of Friends
+  - - The Temptations
+    - Friendship Train
+  - - Out Of Eden
+    - A Friend
+  judged_not_relevant:
+  - - Doors
+    - Hyacinth House
+  - - Israel
+    - You've Been A Friend
+  - - Squeeze
+    - Sleeping With A Friend
+  - - Rainbow
+    - Love's No Friend
+- query: feeling confident and powerful
+  relevant_songs:
+  - - Chicago
+    - Feeling Stronger Everyday
+  - - Christina Aguilera
+    - Soar
+  - - Demi Lovato
+    - Believe In Me
+  - - Demi Lovato
+    - Confident
+  - - Elvis Presley
+    - Confidence
+  - - Human League
+    - Egomaniac
+  - - Isley Brothers
+    - The Pride
+  - - Jennifer Lopez
+    - Alive
+  - - Point Of Grace
+    - Fearless Heart
+  - - Richard Marx
+    - The Power Inside Of Me
+  - - Rush
+    - One Little Victory
+  - - Squeeze
+    - Strong In Reason
+  - - Jennifer Lopez
+    - Alive (Soundtrack Enough)
+  - - Jennifer Lopez
+    - Alive[album Version]
+  - - Joni Mitchell
+    - If
+  - - Mariah Carey
+    - Hero
+  judged_not_relevant:
+  - - Black Sabbath
+    - The Illusion Of Power
+  - - Leann Rimes
+    - You Are
+  - - Mariah Carey
+    - Outside
+  - - Marillion
+    - Power
+  - - Our Lady Peace
+    - Walking In Circles
+  - - Ramones
+    - Anxiety
+  - - Savage Garden
+    - The Best Thing
+  - - Zebrahead
+    - Strength
+  - - Natalie Imbruglia
+    - Sometimes
+- query: party celebration
+  relevant_songs:
+  - - Backstreet Boys
+    - Let's Have A Party
+  - - David Guetta
+    - Ain't A Party
+  - - Demi Lovato
+    - Party
+  - - Eagles
+    - New Years Eve
+  - - Human League
+    - Party
+  - - Kanye West
+    - Celebration
+  - - Madonna
+    - Celebration
+  - - Miley Cyrus
+    - We Got The Party (With Us)
+  - - Mud
+    - Let's Have A Party
+  - - Phineas And Ferb
+    - Intimate Get Together
+  - - Pitbull
+    - Celebrate
+  - - R. Kelly
+    - It's Your Birthday
+  - - Rod Stewart
+    - Having A Party
+  - - Wanda Jackson
+    - (Let's Have A) Party
+  - - Ween
+    - Your Party
+  - - Whitney Houston
+    - Celebrate
+  - - Wyclef Jean
+    - Celebrate
+  - - Quiet Riot
+    - Party All Night
+  - - '''n Sync'
+    - This Is Where The Party's At
+  - - P!nk
+    - Get The Party Started
+  - - Alabama
+    - Gonna Have A Party
+  - - Flo-Rida
+    - Marching On
+  - - Jackson Browne
+    - For A Rocker
+  judged_not_relevant: []
+- query: losing someone you love
+  relevant_songs:
+  - - Diana Ross
+    - Cryin' My Heart Out For You
+  - - Dolly Parton
+    - Falling Out Of Love With Me
+  - - Fleetwood Mac
+    - Affairs Of The Heart
+  - - Hank Snow
+    - I Care No More
+  - - John Denver
+    - Falling Out Of Love
+  - - Journey
+    - Once You Love Somebody
+  - - Journey
+    - Where Did I Lose Your Love
+  - - Queen
+    - It's A Hard Life
+  - - Reba Mcentire
+    - Every Second Someone Breaks A Heart
+  - - Rick Astley
+    - I Don't Want To Lose Her
+  - - Roy Orbison
+    - Losing You
+  - - Scorpions
+    - When Love Kills Love
+  - - Vince Gill
+    - Love Never Broke Anyone's Heart
+  - - Warren Zevon
+    - The Heartache
+  - - Zwan
+    - Of A Broken Heart
+  - - Peter Cetera
+    - Only Love Knows Why
+  - - Bee Gees
+    - Don't Throw It All Away
+  - - Marianne Faithfull
+    - Morning Sun
+  - - Randy Travis
+    - A Heartache In The Works
+  - - Van Halen
+    - Learning To See
+  judged_not_relevant:
+  - - Incubus
+    - Love Hurts
+  - - UB40
+    - Things You Say You Love
